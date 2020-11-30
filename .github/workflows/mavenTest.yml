@@ -1,4 +1,4 @@
-name: Maven TEST
+name: Maven TEST and Pitest
 
 on:
   push:
@@ -29,3 +29,5 @@ jobs:
       uses: scacap/action-surefire-report@v1
       with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Run Mutation Coverage
+      run: mvn -B org.pitest:pitest-maven:mutationCoverage --file pom.xml
