@@ -24,4 +24,4 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Build and Run Mutation Coverage
-      run: mvn -B org.pitest:pitest-maven:mutationCoverage --file pom.xml
+      run: mvn -B compile org.pitest:pitest-maven:mutationCoverage --file pom.xml
