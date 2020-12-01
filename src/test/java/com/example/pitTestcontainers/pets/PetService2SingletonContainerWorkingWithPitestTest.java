@@ -4,11 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -18,22 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Transactional
 @SpringBootTest
-@Testcontainers
-public class PetServiceTest {
+public class PetService2SingletonContainerWorkingWithPitestTest extends  AbstractPostgresContainerBaseTest{
     private static final String LASSIE = "Lassie";
     private static final String GOLDEN = "Golden retriever";
     private static final LocalDate BIRTH_DATE = LocalDate.of(2020, 01, 01);
-
-    @Container
-    public final static PostgreSQLContainer postgresContainer = new PostgreSQLContainer("postgres");
-
-    @DynamicPropertySource
-    static void databaseProperties(DynamicPropertyRegistry registry) {
-        System.err.println("--------- DYNAMIC PROPERTY REGISTRY"+postgresContainer.getJdbcUrl()+" ("+postgresContainer.isRunning()+")");
-        registry.add("spring.datasource.url", postgresContainer::getJdbcUrl);
-        registry.add("spring.datasource.username", postgresContainer::getUsername);
-        registry.add("spring.datasource.password", postgresContainer::getPassword);
-    }
 
     @Autowired
     PetRepository petsRepo;

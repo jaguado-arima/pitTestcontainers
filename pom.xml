@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<testcontainers.version>1.15.0</testcontainers.version>
+		<pitTargetTests>com.example.pitTestcontainers.pets.*</pitTargetTests>
 	</properties>
 
 	<dependencies>
@@ -82,6 +83,7 @@
 					</dependency>
 				</dependencies>
 				<configuration>
+					<targetTests>${pitTargetTests}</targetTests>
 					<verbose>true</verbose>
 				</configuration>
 			</plugin>
