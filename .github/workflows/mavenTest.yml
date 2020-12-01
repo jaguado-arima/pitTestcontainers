@@ -32,6 +32,8 @@ jobs:
     - name: Run Mutation Coverage - NOT WORKING one
       run: mvn -B org.pitest:pitest-maven:mutationCoverage -DpitTargetTests="com.example.pitTestcontainers.pets.PetServiceNotWorking*" --file pom.xml
     - name: Run Mutation Coverage - WORKING one
+      if: always()
       run: mvn -B org.pitest:pitest-maven:mutationCoverage -DpitTargetTests="com.example.pitTestcontainers.pets.PetServiceWorking*" --file pom.xml
     - name: Run Mutation Coverage - WORKING SINGLETON CONTAINER ones
+      if: always()
       run: mvn -B org.pitest:pitest-maven:mutationCoverage -DpitTargetTests="com.example.pitTestcontainers.pets.PetService*SingletonContainerWorking*" --file pom.xml
