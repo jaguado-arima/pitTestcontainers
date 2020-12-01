@@ -50,17 +50,5 @@ public class PetService1SingletonContainerWorkingWithPitestTest extends  Abstrac
     }
 
 
-    @Test
-    void shouldInsertPetIntoDatabaseAndGenerateId() {
-        LocalDate birthDate = LocalDate.now();
-        Pet savedPet = service.savePet("Molly",birthDate,"Poodle" );
-
-        assertTrue(savedPet.getId() != null);
-        Pet petFound = service.getPet(savedPet.getId());
-        assertEquals("Molly", petFound.getName());
-        assertEquals("Poodle", petFound.getType());
-        assertEquals(birthDate, petFound.getBirthDate());
-    }
-
 
 }
